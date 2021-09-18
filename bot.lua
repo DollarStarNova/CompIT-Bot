@@ -116,6 +116,17 @@ client:on("messageCreate", function(message)
 end)
 
 
+-- Hook onto the memberUpdate event to determine when role changes occured for a person.
+
+client:on("memberUpdate", function(member)
+    if member.id == client.user.id then return end
+
+    for role in member.roles:iter() do
+        -- Do something here
+    end
+end)
+
+
 -- Finally we get to make our connection proper.
 
 client:run("Bot "..os.getenv("DISCORD_BOT_TOKEN"))
