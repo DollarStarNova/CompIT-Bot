@@ -69,7 +69,7 @@ client:on("messageCreate", function(message)
     
     if cmd == "!ban" then
         local target = message.mentionedUsers
-        if member:hasPermission(0x00000004) then
+        if member:hasPermission(perms["ban"]) then
             if #target == 1 then
                 message:reply("<@!"..target[1][1].."> has been banned.")
                 member.guild:banUser(target[1][1],_,_)
@@ -86,7 +86,7 @@ client:on("messageCreate", function(message)
     
     if cmd == "!unban" then
         local target = message.mentionedUsers
-        if member:hasPermission(0x00000004) then
+        if member:hasPermission(perms["ban"]) then
             if #target <= 1 then
                 message:reply("<@!"..target[1][1].."> has been unbanned.")
                 member.guild:unbanUser(target[1][1],_)
@@ -100,7 +100,7 @@ client:on("messageCreate", function(message)
     
     if cmd == "!kick" then
         local target = message.mentionedUsers
-        if member:hasPermission(0x00000002) then
+        if member:hasPermission(perms["kick"]) then
             if #target <= 2 then
                 message:reply("<@!"..target[1][1].."> has been kicked for ")
                 member.guild:kickUser(target[1][1],_)
